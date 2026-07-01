@@ -7,7 +7,8 @@
     <meta name="description" content="Den Boleacov: 3D Environment Artist & Game Art specialist. Custom automotive body kits, reverse engineering & 3D printing. Co-founder of a studio in Moldova.">
     <style>
         html, body {
-            height: 100%;
+            /* min-height вместо жесткого height решает проблему со съеданием краев */
+            min-height: 100%;
             margin: 0;
             padding: 0;
             background: #000;
@@ -18,10 +19,12 @@
             color: #00FF00; 
             --c: #00FF00;
             display: flex;
-            align-items: center;
+            /* Выравнивание по вертикали сверху, чтобы на мобилках контент шел естественно */
+            align-items: flex-start;
             justify-content: center;
             box-sizing: border-box;
-            padding: 20px;
+            /* Паддинги увеличены (40px сверху/снизу), чтобы создать безопасную зону на смартфонах */
+            padding: 40px 20px;
         }
         
         .container {
@@ -38,7 +41,7 @@
         
         .grid-links {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Строго две колонки на всех устройствах */
+            grid-template-columns: 1fr 1fr; 
             gap: 10px;
             margin-top: 15px;
         }
@@ -49,12 +52,12 @@
             color: inherit; 
             text-decoration: none; 
             border: 1px solid; 
-            padding: 10px 5px; /* Оптимизированные боковые отступы */
+            padding: 10px 5px; 
             font-weight: bold; 
             cursor: pointer; 
             background: transparent; 
             font-family: inherit; 
-            font-size: 3.2vw; /* Динамический шрифт, чтобы текст не вылезал на мобильных */
+            font-size: 3.2vw; 
             box-sizing: border-box; 
             letter-spacing: 0.5px;
             white-space: nowrap;
@@ -63,23 +66,22 @@
             transition: background 0.15s ease, color 0.15s ease;
         }
 
-        /* Ограничение максимального размера шрифта для ПК */
         @media (min-width: 450px) {
             .btn-act { font-size: 14px; }
+            /* На ПК, где высоты экрана точно достаточно, возвращаем красивое центрирование по центру */
+            body { align-items: center; }
         }
 
-        /* Эффект при наведении на десктопе */
         @media (hover: hover) {
             .btn-act:hover { background: rgba(0, 255, 0, 0.15); }
         }
-        /* Эффект при нажатии */
         .btn-act:active { background: var(--c); color: #000; }
         
         .btn-main {
             padding: 14px;
             font-size: 16px;
             letter-spacing: 1px;
-            grid-column: span 2; /* Главная кнопка всегда растянута на обе колонки */
+            grid-column: span 2; 
             margin-top: 5px;
         }
 
